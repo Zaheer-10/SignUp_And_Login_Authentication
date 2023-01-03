@@ -1,0 +1,378 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/admin_styles.css">
+    <title>Add User</title>
+
+</head>
+
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+        width: 100%;
+        background: #E5E7EB;
+        position: relative;
+        display: flex;
+    }
+
+    #menu {
+        background-color: teal;
+        width: 300px;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+
+    }
+
+    .logo {
+        color: #ffff;
+        padding: 30px 0 0 30px;
+    }
+
+    .items {
+        margin-top: 40px;
+    }
+
+    .items li {
+        list-style: none;
+        padding: 20px 0;
+        transition: 0.3s ease;
+    }
+
+    .items li ion-icon {
+        color: #fff;
+        height: 25px;
+        width: 25px;
+        line-height: 30px;
+        text-align: center;
+        font-size: 14px;
+        margin: 0 10px 0 25px;
+    }
+
+    .items li a {
+        text-decoration: none;
+        color: #fff;
+        font-weight: 300px;
+        transition: 0.3s ease;
+    }
+
+    .items li:hover {
+        background-color: teal;
+        cursor: pointer;
+    }
+
+    .items li:nth-child(2) {
+        border-left: 4px solid #fff;
+    }
+
+    #interface {
+        width: calc(100% - 300px);
+        margin-left: 300px;
+        position: relative;
+    }
+
+    .navigation {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: #ffff;
+        padding: 15px 30px;
+        border-bottom: 3px solid #000000;
+        position: fixed;
+        width: calc(100% - 300px);
+
+    }
+
+    .search {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 10px 14px;
+        border: 1px solid #d7dbe6;
+        border-radius: 4px;
+    }
+
+    .search input {
+        margin-left: 14px;
+        border: none;
+        outline: none;
+        font-size: 14px;
+    }
+
+    .profile {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    .profile ion-icon {
+        margin-right: 20px;
+        font-size: 25px;
+        font-weight: 400;
+    }
+
+    .n1 {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    #menu-btn {
+        display: none;
+        font-size: 20px;
+        cursor: pointer;
+        margin-right: 20px;
+    }
+
+    .page_name {
+        color: #000000;
+        padding: 30px 30px 0 30px;
+        font-size: 24px;
+        font-weight: 700;
+    }
+
+    .values {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 30px 30px 0 30px;
+        flex-wrap: wrap;
+    }
+
+    .val-box {
+        background: #fff;
+        width: 235px;
+        padding: 16px 20px;
+        border-radius: 5px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .val-box ion-icon {
+        font-size: 31px;
+        margin-right: 10px;
+    }
+
+    .board {
+        width: 95%;
+        margin: 30px 0 30px 30px;
+        overflow: auto;
+        background: #fff;
+        border-radius: 5px;
+    }
+
+    .board h5 {
+        font-weight: 300;
+        font-size: 15px;
+    }
+
+    .board p {
+        font-size: 13px;
+        font-weight: 400;
+    }
+
+    table {
+        border-collapse: collapse;
+    }
+
+    tr {
+        border-bottom: 1px solid #eef0f3;
+    }
+
+    thead td {
+        font-size: 14px;
+        text-transform: uppercase;
+        font-weight: 500;
+        background: #f9fafb;
+        text-align: start;
+        padding: 15px;
+    }
+
+    tbody tr td {
+        padding: 10px 15px;
+    }
+
+    .active p {
+        background: #d7fae4;
+        padding: 2px 10px;
+        display: inline-block;
+        border-radius: 40px;
+        color: #2b2b2b;
+    }
+
+    .edit a {
+        text-decoration: none;
+        font-size: 14px;
+        color: #000000;
+        font-weight: 500;
+    }
+
+    @media (max-width: 769px) {
+        #menu {
+            width: 200px;
+            position: fixed;
+            left: -270px;
+        }
+
+        #menu-btn {
+            display: inline;
+            font-size: 20px;
+            cursor: pointer;
+            margin-right: 20px;
+            max-width: 50px;
+        }
+
+        #interface {
+            width: 100%;
+            margin-left: 0px;
+            display: inline-block;
+        }
+
+        .navigation {
+            width: 100%;
+        }
+
+        .values {
+            padding: 30px 30px 0 30px;
+            justify-content: flex-start;
+        }
+
+        .val-box {
+            padding: 16px 20px;
+            margin: 10px 20px 10px 0;
+        }
+
+        .board {
+            width: 92%;
+            padding: 0;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+    }
+
+    /* add user  */
+
+    .wrapper {
+        width: 80%;
+        height: 60vh;
+        padding: 2rem 1rem;
+        margin: 50px auto;
+        background-color: #fff;
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: rgba(0, 0, 0, 0.1);
+    }
+
+    .wrapper h2 {
+        color: #000000;
+        margin-bottom: 30px;
+    }
+
+    form input {
+        width: 70%;
+        outline: none;
+        border: 1px solid #fff;
+        padding: 12px 20px;
+        margin-bottom: 30px;
+        border-radius: 10px;
+        background: #e4e4e4;
+    }
+
+    .logotag {
+        text-decoration: none;
+        color: #fff;
+        font-weight: bold;
+    }
+
+    .fbtn {
+        padding: 0 143px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .form-btn {
+        width: 150px;
+        color: #fff;
+        background: #000000;
+    }
+
+    .del-btn {
+        width: 150px;
+        color: #fff;
+        background: #f84825;
+    }
+
+    .upd1 {
+        margin-top: 150px;
+    }
+</style>
+
+
+<body>
+    <section id="menu">
+        <div class="logo">
+            <a href="{% url 'admin_panel' %}" class="logotag">
+                <h2>Admin Panel</h2>
+            </a>
+        </div>
+
+        <div class="items">
+            <li><ion-icon name="pie-chart-outline"></ion-icon><a href="#">Dashboard</a></li>
+            <li><ion-icon name="people-outline"></ion-icon><a href="#">Users</a></li>
+            <li><ion-icon name="settings-outline"></ion-icon><a href="#">Settings</a></li>
+            <li><ion-icon name="help-circle-outline"></ion-icon><a href="#">Help</a></li>
+        </div>
+
+    </section>
+    <section id="interface">
+        <div class="navigation">
+
+            <div class="n1">
+                <div>
+                    <ion-icon id="menu-btn" name="menu-outline"></ion-icon>
+                </div>
+                <div class="search">
+                    <ion-icon name="search-outline"></ion-icon>
+                    <input type="text" placeholder="Search">
+                </div>
+            </div>
+        </div>
+        <h3 class="page_name upd1"></h3>
+        <div class="wrapper">
+            <h2>Add user here</h2>
+            <form  method="POST">
+                {% csrf_token %}
+                <input type="text" placeholder="username" name="username" id="username">
+                <input type="email" placeholder="email" name="email" id="email">
+                <input type="password" placeholder="password" name="password1" id="password1">
+                <input type="password" placeholder="Re-Enter password" name="password2" id="password2">
+                <br>
+                <input type="submit" class="form-btn" value="Add user">
+                <div class="msg">
+                    {% for message in messages %}
+                    <p style="color:red">{{message}}</p>
+                    {% endfor %}
+                </div>
+            </form>
+        </div>
+    </section>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

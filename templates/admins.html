@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+</head>
+<style>
+  .ft {
+    height: 100px;
+    width: 100vw;
+    background-color: teal;
+  }
+</style>
+<body>
+  <nav class="navbar bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand font-weight-bolder text-white text-center">Home - Page</a>
+            <a href="{% url 'logout'  %}" class="btn btn-primary justify-content-center">Admin Panel</a>
+
+      <a href="{% url 'logout'  %}" class="btn btn-primary justify-content-center">Logout</a>
+    </div>
+  </nav>
+
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6 text-center">
+        <H2>WEEK PATTERN OF STUDENTS AT BROTOTYPE </H2>
+        <h4>In The Domain Python</h4>
+        <a href="" class="btn-get-started mb-5">Weeks pattern</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+
+    {% for result in home %}
+    <div class=" col-4 card" style="width: 18rem;">
+      <img src="{{ result.image.url }}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <p class="card-text">{{ result.name }}</p>
+      </div>
+    </div>
+    {% endfor %}
+
+  </div>
+
+
+<!-- ..................footer................ -->
+  <div class="row ft">
+    <div class="col-12 text-center mt-5 text-white fw-4">
+      THANK YOU ... VISIT AGAIN
+    </div>
+  </div>
+  
+</body>
+</html>
